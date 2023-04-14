@@ -24,19 +24,41 @@ using static ItemTypesServer;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Pipliz.Networking;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 namespace james.publicRail
 {
     [ModLoader.ModManager]
-    public class publicRail : IOnPlayerClicked
+    public class publicRail : IOnPlayerClicked, IOnNPCHit
     {
         public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
         {
-            Chatting.Chat.Send(player, "publicRail 0.0.0.3");
+            Chatting.Chat.Send(player, "publicRail 0.0.0.4");
 
+            return;
+
+        }
+
+        public void OnNPCHit(NPCBase npc, ModLoader.OnHitData hit)
+        {
+            String jobbloc = npc.Job.GetJobLocation().Location.ToString();
+            String myloc = npc.Position.ToString();
+
+            float xdist = npc.Job.GetJobLocation().Location.x - npc.Position.x;
+            xdist *= xdist;
+            float ydist = npc.Job.GetJobLocation().Location.y - npc.Position.y;
+            ydist *= ydist;
+            float zdist = npc.Job.GetJobLocation().Location.z - npc.Position.z;
+            zdist *= zdist;
+            String distsquared = (xdist+ydist+zdist).ToString();
+
+            Chatting.Chat.SendToConnected("job " + jobbloc);
+            Chatting.Chat.SendToConnected("myloc " + myloc);
+            Chatting.Chat.SendToConnected("distsquared " + distsquared);
             return;
         }
 
-        
+
     }
 }
