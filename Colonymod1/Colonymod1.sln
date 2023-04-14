@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33530.505
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "james.publicRail", "Colonymod1\james.publicRail.csproj", "{5F5663E9-CFC5-4F29-BA60-699EA2CD7B23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5F5663E9-CFC5-4F29-BA60-699EA2CD7B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F5663E9-CFC5-4F29-BA60-699EA2CD7B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F5663E9-CFC5-4F29-BA60-699EA2CD7B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F5663E9-CFC5-4F29-BA60-699EA2CD7B23}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5835ABF0-53BF-4176-8833-C03FC2821658}
+	EndGlobalSection
+EndGlobal
