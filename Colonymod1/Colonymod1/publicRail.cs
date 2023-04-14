@@ -23,13 +23,20 @@ using Transport.Elevator;
 using static ItemTypesServer;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
-
+using Pipliz.Networking;
 
 namespace james.publicRail
 {
     [ModLoader.ModManager]
-    public class publicRail
+    public class publicRail : IOnPlayerClicked
     {
+        public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
+        {
+            Chatting.Chat.Send(player, "publicRail 0.0.0.2");
+
+            return;
+        }
+
+        
     }
 }
