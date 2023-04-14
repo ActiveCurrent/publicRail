@@ -32,7 +32,7 @@ namespace james.publicRail
     {
         public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
         {
-            Chatting.Chat.Send(player, "publicRail 0.0.0.2");
+            Chatting.Chat.Send(player, "publicRail 0.0.0.3");
 
             return;
         }
