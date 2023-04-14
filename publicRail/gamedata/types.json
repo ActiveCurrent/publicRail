@@ -14,5 +14,6 @@
 	"elevatorshafthorizontalz+": {
 		"pathingImpact": "AsAir"},
 	"elevatorshafthorizontalz-": {
-		"pathingImpact": "AsAir"}
+		"pathingImpact": "AsAir"
+	}
 }
