@@ -1,0 +1,18 @@
+{
+	"elevatorshafthorizontx+": {
+		"pathingImpact": "AsAir"},
+	"elevatorshaftx-": {
+		"pathingImpact": "AsAir"},
+	"elevatorshaftz+": {
+		"pathingImpact": "AsAir"},
+	"elevatorshaftz-": {
+		"pathingImpact": "AsAir"},
+	"elevatorshafthorizontalx+": {
+		"pathingImpact": "AsAir"},
+	"elevatorshafthorizontalx-": {
+		"pathingImpact": "AsAir"},
+	"elevatorshafthorizontalz+": {
+		"pathingImpact": "AsAir"},
+	"elevatorshafthorizontalz-": {
+		"pathingImpact": "AsAir"}
+}

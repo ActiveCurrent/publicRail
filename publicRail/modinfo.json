@@ -9,7 +9,7 @@
     ],
     "jsonFiles": [
       {
-				"relativePath" : "./gamedata/generateblocks.json",
+				"relativePath" : "./gamedata/types.json",
 				"fileType" : "overrideTypeProperties",
 				"index" : -1000000
 			}
