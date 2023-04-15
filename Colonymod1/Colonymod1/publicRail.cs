@@ -33,7 +33,7 @@ using System.Xml.Linq;
 namespace james.publicRail
 {
     [ModLoader.ModManager]
-    public class publicRail : GoalJob, PathingManager.IPathingThreadAction, IOnPlayerClicked, IOnNPCHit
+    public class publicRail : GoalJob, PathingManager.IPathingThreadAction, IOnPlayerClicked, IOnNPCHit, INPCGoal
     {
 
         public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
@@ -61,15 +61,14 @@ namespace james.publicRail
             Chatting.Chat.SendToConnected("myloc " + myloc);
             Chatting.Chat.SendToConnected("distsquared " + distsquared);
 
-            npc.SetPosition(npc.Job.GetJobLocation().Location); //good to be used for sending along track, variable speed depending on track length
+            //npc.SetPosition(npc.Job.GetJobLocation().Location); //good to be used for sending along track, variable speed depending on track length
 
-            //jobGoalLocation = npc.Job.GetJobLocation().Location;
-            //this.jobGoalLocationState = GoalJob.TryGetJobLocation(npc, out this.jobGoalLocation, out this.jobGoalLocationStanding);
+            npc.SetGoal<GoalStockpile>();
 
-            Chatting.Chat.SendToConnected("Sending NPC to job location");
+            Chatting.Chat.SendToConnected("Sending NPC to crate");
             return;
         }
-        public void OnNPCUpdate()
+        public override void OnNPCUpdate(NPCBase npc)
         { }
 
     }
