@@ -3,8 +3,35 @@ using BlockTypes;
 using Pipliz;
 using Pipliz.Collections.Native;
 using Unity.Mathematics;
+using Jobs;
+using Jobs.Implementations.Construction;
+using ModLoaderInterfaces;
+using NetworkUI;
+using NetworkUI.AreaJobs;
+using NetworkUI.Items;
+using Science;
+using Shared;
+using System;
+using System.Reflection;
+using static Players;
+using BlockEntities;
+using NPC;
+using Recipes;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine.Assertions;
+using UnityEngine.Profiling;
+using BlockEntities.Helpers;
+using Transport.Elevator;
+using static ItemTypesServer;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Pipliz.Networking;
+using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
-namespace NPC {
+namespace james.publicRail {
+    [ModLoader.ModManager]
     public class GoalRail:GoalLandmark {
         public static readonly GoalRail.RailFilter StockpileFilterInstance = new GoalRail.RailFilter();
 
