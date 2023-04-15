@@ -18,6 +18,7 @@ using Recipes;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.Assertions;
+using UnityEngine.Profiling;
 using BlockEntities.Helpers;
 using Transport.Elevator;
 using static ItemTypesServer;
@@ -27,11 +28,14 @@ using Pipliz.Networking;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
 
+
+
 namespace james.publicRail
 {
     [ModLoader.ModManager]
-    public class publicRail : IOnPlayerClicked, IOnNPCHit
+    public class publicRail : GoalJob, PathingManager.IPathingThreadAction, IOnPlayerClicked, IOnNPCHit
     {
+
         public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
         {
             Chatting.Chat.Send(player, "publicRail 0.0.0.4");
@@ -56,9 +60,17 @@ namespace james.publicRail
             Chatting.Chat.SendToConnected("job " + jobbloc);
             Chatting.Chat.SendToConnected("myloc " + myloc);
             Chatting.Chat.SendToConnected("distsquared " + distsquared);
+
+            npc.SetPosition(npc.Job.GetJobLocation().Location); //good to be used for sending along track, variable speed depending on track length
+
+            //jobGoalLocation = npc.Job.GetJobLocation().Location;
+            //this.jobGoalLocationState = GoalJob.TryGetJobLocation(npc, out this.jobGoalLocation, out this.jobGoalLocationStanding);
+
+            Chatting.Chat.SendToConnected("Sending NPC to job location");
             return;
         }
-
+        public void OnNPCUpdate()
+        { }
 
     }
 }
