@@ -27,18 +27,19 @@ using Newtonsoft.Json.Linq;
 using Pipliz.Networking;
 using System.Security.Cryptography.X509Certificates;
 using System.Xml.Linq;
-
-
+using DebugState;
+using Jobs.Implementations;
 
 namespace james.publicRail
 {
     [ModLoader.ModManager]
-    public class publicRail : GoalJob, PathingManager.IPathingThreadAction, IOnPlayerClicked, IOnNPCHit, INPCGoal
+    public class publicRail : GoalJob, IOnPlayerClicked, IOnNPCHit
     {
+        public NPCBase.NPCPath pathToGoal;
 
         public void OnPlayerClicked(Players.Player player, PlayerClickedData click)
         {
-            Chatting.Chat.Send(player, "publicRail 0.0.0.4");
+            //Chatting.Chat.Send(player, "publicRail 0.0.0.4");
 
             return;
 
@@ -46,6 +47,8 @@ namespace james.publicRail
 
         public void OnNPCHit(NPCBase npc, ModLoader.OnHitData hit)
         {
+
+
             String jobbloc = npc.Job.GetJobLocation().Location.ToString();
             String myloc = npc.Position.ToString();
 
@@ -63,13 +66,33 @@ namespace james.publicRail
 
             //npc.SetPosition(npc.Job.GetJobLocation().Location); //good to be used for sending along track, variable speed depending on track length
 
+            Chatting.Chat.SendToConnected(npc.ActiveGoal.ToString());
             npc.SetGoal<GoalStockpile>();
+            Chatting.Chat.SendToConnected(npc.ActiveGoal.ToString());
+
+            OnNPCUpdate(npc); // npc stops and figures out what it is supposed to be doing
+
+            //this.pathToGoal.Clear();
+            //this.pathingThreadPathStart = npc.Position;
+            //ServerManager.PathingManager.QueueAction((PathingManager.IPathingThreadAction)this);
 
             Chatting.Chat.SendToConnected("Sending NPC to crate");
             return;
         }
-        public override void OnNPCUpdate(NPCBase npc)
-        { }
+
+
+        public new void OnNPCUpdate(NPCBase npc)
+        {
+            if (!npc.state.Inventory.IsEmpty)
+            {
+                npc.SetGoal<GoalStockpile>();
+                Chatting.Chat.SendToConnected("Going crate lol");
+            }
+            else if (!TimeCycle.IsDay)
+                npc.SetGoal<GoalBed>();
+            else
+                npc.SetGoal<GoalIdleAroundBanner>();
+        }
 
     }
 }

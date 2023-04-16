@@ -46,11 +46,16 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="Unity.Mathematics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>F:\SteamLibrary\steamapps\common\Colony Survival\colonyserver_Data\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine">
       <HintPath>F:\SteamLibrary\steamapps\common\Colony Survival\colonyserver_Data\Managed\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GoalRail.cs" />
     <Compile Include="publicRail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
